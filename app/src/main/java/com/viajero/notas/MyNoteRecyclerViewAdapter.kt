@@ -1,19 +1,18 @@
 package com.viajero.notas
 
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.recyclerview.widget.RecyclerView
 
-import com.viajero.notas.dummy.DummyContent.DummyItem
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem].
  * TODO: Replace the implementation with code for your data type.
  */
 class MyNoteRecyclerViewAdapter(
-    private val values: List<DummyItem>
+    private val values: List<Note>
 ) : RecyclerView.Adapter<MyNoteRecyclerViewAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -25,7 +24,7 @@ class MyNoteRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = values[position]
         holder.idView.text = item.id
-        holder.contentView.text = item.content
+
     }
 
     override fun getItemCount(): Int = values.size

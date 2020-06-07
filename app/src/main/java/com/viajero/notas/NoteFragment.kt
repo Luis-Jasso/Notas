@@ -38,7 +38,7 @@ class NoteFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyNoteRecyclerViewAdapter(DummyContent.ITEMS)
+                adapter = MyNoteRecyclerViewAdapter()
             }
         }
         return view
