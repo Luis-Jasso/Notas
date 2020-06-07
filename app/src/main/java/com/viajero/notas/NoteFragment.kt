@@ -8,22 +8,15 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.viajero.notas.dummy.DummyContent
+
 
 /**
  * A fragment representing a list of Items.
  */
-class NoteFragment : Fragment() {
+class NoteFragment (val list:List<Note>): Fragment() {
 
     private var columnCount = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-        arguments?.let {
-            columnCount = it.getInt(ARG_COLUMN_COUNT)
-        }
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,24 +31,11 @@ class NoteFragment : Fragment() {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                adapter = MyNoteRecyclerViewAdapter()
+                adapter = MyNoteRecyclerViewAdapter(list)
             }
         }
         return view
     }
 
-    companion object {
 
-        // TODO: Customize parameter argument names
-        const val ARG_COLUMN_COUNT = "column-count"
-
-        // TODO: Customize parameter initialization
-        @JvmStatic
-        fun newInstance(columnCount: Int) =
-            NoteFragment().apply {
-                arguments = Bundle().apply {
-                    putInt(ARG_COLUMN_COUNT, columnCount)
-                }
-            }
-    }
 }
